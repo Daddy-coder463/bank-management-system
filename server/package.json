@@ -1,0 +1,22 @@
+{
+  "name": "bank-management-server",
+  "version": "1.0.0",
+  "description": "Bank Management System API - Express + MySQL (DBMS project)",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "db:setup": "node scripts/setupDb.js",
+    "db:seed": "node scripts/seedDb.js",
+    "test:concurrency": "node scripts/concurrencyTest.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.0"
+  }
+}
