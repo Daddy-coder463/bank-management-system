@@ -6,7 +6,7 @@ export default function Table({ columns, rows, loading, emptyMessage = 'No recor
     <div className="overflow-x-auto">
       <table className="w-full text-left text-sm">
         <thead>
-          <tr className="border-b border-gray-100 text-xs uppercase tracking-wide text-gray-400">
+          <tr className="border-b border-stone-200 text-xs text-stone-400">
             {columns.map((col) => (
               <th
                 key={col.key}
@@ -20,10 +20,10 @@ export default function Table({ columns, rows, loading, emptyMessage = 'No recor
         <tbody>
           {loading ? (
             [...Array(5)].map((_, i) => (
-              <tr key={i} className="border-b border-gray-50">
+              <tr key={i} className="border-b border-stone-100">
                 {columns.map((col) => (
                   <td key={col.key} className="px-4 py-3.5">
-                    <div className="h-4 animate-pulse rounded bg-gray-100" />
+                    <div className="h-4 animate-pulse rounded bg-stone-100" />
                   </td>
                 ))}
               </tr>
@@ -31,7 +31,7 @@ export default function Table({ columns, rows, loading, emptyMessage = 'No recor
           ) : rows.length === 0 ? (
             <tr>
               <td colSpan={columns.length}>
-                <div className="flex flex-col items-center gap-2 py-12 text-gray-400">
+                <div className="flex flex-col items-center gap-2 py-12 text-stone-400">
                   <Inbox className="h-8 w-8" />
                   <p className="text-sm">{emptyMessage}</p>
                 </div>
@@ -39,11 +39,11 @@ export default function Table({ columns, rows, loading, emptyMessage = 'No recor
             </tr>
           ) : (
             rows.map((row, i) => (
-              <tr key={row.id ?? i} className="border-b border-gray-50 hover:bg-gray-50/60">
+              <tr key={row.id ?? i} className="border-b border-stone-100 hover:bg-stone-50/60">
                 {columns.map((col) => (
                   <td
                     key={col.key}
-                    className={`px-4 py-3.5 text-gray-700 ${col.align === 'right' ? 'text-right' : ''}`}
+                    className={`px-4 py-3.5 text-stone-700 ${col.align === 'right' ? 'text-right' : ''}`}
                   >
                     {col.render ? col.render(row) : row[col.key]}
                   </td>

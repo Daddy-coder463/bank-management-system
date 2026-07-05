@@ -21,19 +21,19 @@ const links = [
 export default function Sidebar({ open, onClose }) {
   return (
     <>
-      {open && <div className="fixed inset-0 z-20 bg-gray-900/40 lg:hidden" onClick={onClose} />}
+      {open && <div className="fixed inset-0 z-20 bg-stone-900/40 lg:hidden" onClick={onClose} />}
       <aside
-        className={`fixed inset-y-0 left-0 z-30 w-60 border-r border-gray-100 bg-white transition-transform lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-30 w-60 border-r border-stone-200 bg-[#F6F4ED] transition-transform lg:translate-x-0 ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex items-center gap-2.5 px-6 py-5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-clay-600">
             <Landmark className="h-5 w-5 text-white" />
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900">BankDB</p>
-            <p className="text-xs text-gray-400">Management System</p>
+            <p className="font-serif text-base font-medium text-stone-900">BankDB</p>
+            <p className="text-xs text-stone-500">Management system</p>
           </div>
         </div>
         <nav className="mt-2 space-y-1 px-3">
@@ -44,10 +44,10 @@ export default function Sidebar({ open, onClose }) {
               end={end}
               onClick={onClose}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
+                `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-emerald-50 text-emerald-700'
-                    : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'
+                    ? 'bg-clay-100 text-clay-800'
+                    : 'text-stone-500 hover:bg-[#EDEAE0] hover:text-stone-800'
                 }`
               }
             >
