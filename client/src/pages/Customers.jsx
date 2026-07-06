@@ -104,19 +104,19 @@ export default function Customers() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-[28px] font-medium text-stone-900">Customers</h1>
-          <p className="text-sm text-stone-500">Manage bank customers</p>
+          <h1 className="text-2xl font-semibold text-gray-900">Customers</h1>
+          <p className="text-sm text-gray-500">Manage bank customers</p>
         </div>
         <Button onClick={openNew}>
-          <UserPlus className="h-4 w-4" /> Add customer
+          <UserPlus className="h-4 w-4" /> Add Customer
         </Button>
       </div>
 
       <Card>
         <div className="relative mb-4 max-w-sm">
-          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <input
-            className="w-full rounded-lg border border-stone-200 bg-white py-2.5 pl-10 pr-3.5 text-sm placeholder:text-stone-400 focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-100"
+            className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm placeholder:text-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
             placeholder="Search by name, email or phone…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -127,7 +127,7 @@ export default function Customers() {
           rows={customers}
           emptyMessage="No customers found"
           columns={[
-            { key: 'name', label: 'Name', render: (r) => <span className="font-medium text-stone-900">{r.name}</span> },
+            { key: 'name', label: 'Name', render: (r) => <span className="font-medium text-gray-900">{r.name}</span> },
             { key: 'email', label: 'Email' },
             { key: 'phone', label: 'Phone', render: (r) => r.phone || '—' },
             { key: 'account_count', label: 'Accounts' },
@@ -138,10 +138,10 @@ export default function Customers() {
               align: 'right',
               render: (r) => (
                 <div className="flex justify-end gap-1">
-                  <button onClick={() => openEdit(r)} className="rounded-lg p-1.5 text-stone-400 hover:bg-stone-100 hover:text-stone-600">
+                  <button onClick={() => openEdit(r)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600">
                     <Pencil className="h-4 w-4" />
                   </button>
-                  <button onClick={() => setDeleting(r)} className="rounded-lg p-1.5 text-stone-400 hover:bg-red-50 hover:text-red-600">
+                  <button onClick={() => setDeleting(r)} className="rounded-lg p-1.5 text-gray-400 hover:bg-red-50 hover:text-red-600">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
@@ -154,7 +154,7 @@ export default function Customers() {
       <Modal
         open={!!modal}
         onClose={closeModal}
-        title={editing ? 'Edit customer' : 'Add customer'}
+        title={editing ? 'Edit Customer' : 'Add Customer'}
         footer={
           <>
             <Button variant="secondary" onClick={closeModal}>Cancel</Button>
@@ -177,7 +177,7 @@ export default function Customers() {
       <Modal
         open={!!deleting}
         onClose={() => setDeleting(null)}
-        title="Delete customer"
+        title="Delete Customer"
         footer={
           <>
             <Button variant="secondary" onClick={() => setDeleting(null)}>Cancel</Button>
@@ -185,8 +185,8 @@ export default function Customers() {
           </>
         }
       >
-        <p className="text-sm text-stone-600">
-          Delete <span className="font-medium text-stone-900">{deleting?.name}</span>? Customers with
+        <p className="text-sm text-gray-600">
+          Delete <span className="font-medium text-gray-900">{deleting?.name}</span>? Customers with
           existing accounts or loans cannot be deleted (foreign key protection).
         </p>
       </Modal>

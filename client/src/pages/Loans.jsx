@@ -101,11 +101,11 @@ export default function Loans() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-[28px] font-medium text-stone-900">Loans</h1>
-          <p className="text-sm text-stone-500">Loan applications, EMIs and repayments</p>
+          <h1 className="text-2xl font-semibold text-gray-900">Loans</h1>
+          <p className="text-sm text-gray-500">Loan applications, EMIs and repayments</p>
         </div>
         <Button onClick={() => { setForm(emptyForm); setErrors({}); setApplyOpen(true); }}>
-          <HandCoins className="h-4 w-4" /> Apply for loan
+          <HandCoins className="h-4 w-4" /> Apply for Loan
         </Button>
       </div>
 
@@ -115,7 +115,7 @@ export default function Loans() {
           rows={loans}
           emptyMessage="No loans yet"
           columns={[
-            { key: 'customer_name', label: 'Customer', render: (r) => <span className="font-medium text-stone-900">{r.customer_name}</span> },
+            { key: 'customer_name', label: 'Customer', render: (r) => <span className="font-medium text-gray-900">{r.customer_name}</span> },
             { key: 'type', label: 'Type' },
             { key: 'principal', label: 'Principal', align: 'right', render: (r) => formatCurrency(r.principal) },
             { key: 'interest_rate', label: 'Rate', align: 'right', render: (r) => `${r.interest_rate}%` },
@@ -127,11 +127,11 @@ export default function Loans() {
                 const pct = r.total_payable > 0 ? Math.min(100, Math.round((r.total_paid / r.total_payable) * 100)) : 0;
                 return (
                   <div className="w-28">
-                    <div className="mb-1 flex justify-between text-xs text-stone-400">
+                    <div className="mb-1 flex justify-between text-xs text-gray-400">
                       <span>{pct}%</span>
                     </div>
-                    <div className="h-1.5 rounded-full bg-stone-100">
-                      <div className="h-1.5 rounded-full bg-clay-500" style={{ width: `${pct}%` }} />
+                    <div className="h-1.5 rounded-full bg-gray-100">
+                      <div className="h-1.5 rounded-full bg-emerald-500" style={{ width: `${pct}%` }} />
                     </div>
                   </div>
                 );
@@ -157,7 +157,7 @@ export default function Loans() {
       <Modal
         open={applyOpen}
         onClose={() => setApplyOpen(false)}
-        title="Apply for loan"
+        title="Apply for Loan"
         footer={
           <>
             <Button variant="secondary" onClick={() => setApplyOpen(false)}>Cancel</Button>
@@ -196,8 +196,8 @@ export default function Loans() {
               onChange={(e) => setForm({ ...form, tenure_months: e.target.value })} />
           </div>
           {previewEmi > 0 && (
-            <div className="rounded-lg bg-clay-50 px-4 py-3 text-sm text-clay-800">
-              Estimated EMI: <span className="font-medium">{formatCurrency(previewEmi)}</span> / month
+            <div className="rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+              Estimated EMI: <span className="font-semibold">{formatCurrency(previewEmi)}</span> / month
             </div>
           )}
         </div>
@@ -210,14 +210,14 @@ export default function Loans() {
         footer={
           <>
             <Button variant="secondary" onClick={() => setPaying(null)}>Cancel</Button>
-            <Button onClick={pay} disabled={saving}>{saving ? 'Paying…' : 'Record payment'}</Button>
+            <Button onClick={pay} disabled={saving}>{saving ? 'Paying…' : 'Record Payment'}</Button>
           </>
         }
       >
         <div className="space-y-4">
-          <p className="text-sm text-stone-600">
+          <p className="text-sm text-gray-600">
             {paying?.customer_name} — {paying?.type} loan. Outstanding:{' '}
-            <span className="font-medium text-stone-900">{formatCurrency(paying?.outstanding)}</span>
+            <span className="font-medium text-gray-900">{formatCurrency(paying?.outstanding)}</span>
           </p>
           <Input label="Payment amount" type="number" min="0" value={payAmount}
             onChange={(e) => setPayAmount(e.target.value)} />

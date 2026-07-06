@@ -83,19 +83,19 @@ export default function Accounts() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-[28px] font-medium text-stone-900">Accounts</h1>
-          <p className="text-sm text-stone-500">All bank accounts and balances</p>
+          <h1 className="text-2xl font-semibold text-gray-900">Accounts</h1>
+          <p className="text-sm text-gray-500">All bank accounts and balances</p>
         </div>
         <Button onClick={() => setModalOpen(true)}>
-          <PlusCircle className="h-4 w-4" /> Open new account
+          <PlusCircle className="h-4 w-4" /> Open New Account
         </Button>
       </div>
 
       <Card>
         <div className="relative mb-4 max-w-sm">
-          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
+          <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <input
-            className="w-full rounded-lg border border-stone-200 bg-white py-2.5 pl-10 pr-3.5 text-sm placeholder:text-stone-400 focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-100"
+            className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-10 pr-3.5 text-sm placeholder:text-gray-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
             placeholder="Search by account no. or customer…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -106,7 +106,7 @@ export default function Accounts() {
           rows={accounts}
           emptyMessage="No accounts found"
           columns={[
-            { key: 'account_no', label: 'Account no.', render: (r) => <span className="font-mono text-stone-900">{r.account_no}</span> },
+            { key: 'account_no', label: 'Account No.', render: (r) => <span className="font-mono text-gray-900">{r.account_no}</span> },
             { key: 'customer_name', label: 'Customer' },
             { key: 'branch_name', label: 'Branch' },
             { key: 'type', label: 'Type' },
@@ -116,7 +116,7 @@ export default function Accounts() {
               key: 'balance',
               label: 'Balance',
               align: 'right',
-              render: (r) => <span className="font-medium text-stone-900">{formatCurrency(r.balance)}</span>,
+              render: (r) => <span className="font-medium text-gray-900">{formatCurrency(r.balance)}</span>,
             },
           ]}
         />
@@ -125,11 +125,11 @@ export default function Accounts() {
       <Modal
         open={modalOpen}
         onClose={closeModal}
-        title="Open new account"
+        title="Open New Account"
         footer={
           <>
             <Button variant="secondary" onClick={closeModal}>Cancel</Button>
-            <Button onClick={save} disabled={saving}>{saving ? 'Opening…' : 'Open account'}</Button>
+            <Button onClick={save} disabled={saving}>{saving ? 'Opening…' : 'Open Account'}</Button>
           </>
         }
       >

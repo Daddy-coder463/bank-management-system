@@ -85,8 +85,8 @@ export default function Transactions() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="font-serif text-[28px] font-medium text-stone-900">Transactions</h1>
-          <p className="text-sm text-stone-500">Deposits, withdrawals and transfers</p>
+          <h1 className="text-2xl font-semibold text-gray-900">Transactions</h1>
+          <p className="text-sm text-gray-500">Deposits, withdrawals and transfers</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Button variant="secondary" onClick={() => openModal('deposit')}>
@@ -96,7 +96,7 @@ export default function Transactions() {
             <ArrowUpFromLine className="h-4 w-4" /> Withdraw
           </Button>
           <Button onClick={() => openModal('transfer')}>
-            <ArrowLeftRight className="h-4 w-4" /> Transfer money
+            <ArrowLeftRight className="h-4 w-4" /> Transfer Money
           </Button>
         </div>
       </div>
@@ -132,14 +132,14 @@ export default function Transactions() {
               label: 'Amount',
               align: 'right',
               render: (r) => (
-                <span className={r.type === 'DEPOSIT' || r.type === 'TRANSFER_IN' ? 'text-[#3B6D11]' : 'text-[#A32D2D]'}>
+                <span className={r.type === 'DEPOSIT' || r.type === 'TRANSFER_IN' ? 'text-emerald-600' : 'text-red-600'}>
                   {r.type === 'DEPOSIT' || r.type === 'TRANSFER_IN' ? '+' : '−'}{formatCurrency(r.amount)}
                 </span>
               ),
             },
             {
               key: 'balance_after',
-              label: 'Balance after',
+              label: 'Balance After',
               align: 'right',
               render: (r) => formatCurrency(r.balance_after),
             },
@@ -150,7 +150,7 @@ export default function Transactions() {
       <Modal
         open={!!modal}
         onClose={closeModal}
-        title={modal === 'deposit' ? 'Deposit money' : modal === 'withdraw' ? 'Withdraw money' : 'Transfer money'}
+        title={modal === 'deposit' ? 'Deposit Money' : modal === 'withdraw' ? 'Withdraw Money' : 'Transfer Money'}
         footer={
           <>
             <Button variant="secondary" onClick={closeModal}>Cancel</Button>
