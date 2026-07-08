@@ -10,4 +10,6 @@ export const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   decimalNumbers: true,
+  // Managed MySQL hosts (e.g. Aiven) require TLS; set DB_SSL=true there.
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
 });

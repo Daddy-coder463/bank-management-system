@@ -1,4 +1,6 @@
 import 'dotenv/config';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import express from 'express';
 import cors from 'cors';
 
@@ -24,6 +26,17 @@ app.use('/api/accounts', requireAuth, accountRoutes);
 app.use('/api/transactions', requireAuth, transactionRoutes);
 app.use('/api/loans', requireAuth, loanRoutes);
 app.use('/api/admin', requireAuth, adminRoutes);
+
+// In production the API also serves the built React app (client/dist),
+// so the whole project deploys as a single web service.
+if (process.env.NODE_ENV === 'production') {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const clientDist = path.resolve(__dirname, '..', '..', 'client', 'dist');
+  app.use(express.static(clientDist));
+  app.get(/^\/(?!api\/).*/, (req, res) => {
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
+}
 
 // Central error handler: SQL SIGNAL messages (45000) and constraint
 // violations become readable API errors instead of 500s.

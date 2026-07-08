@@ -27,6 +27,7 @@ async function main() {
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     multipleStatements: true,
+    ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
   });
 
   console.log(`Recreating database ${DB_NAME}...`);

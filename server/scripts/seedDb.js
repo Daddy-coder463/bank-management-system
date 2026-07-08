@@ -17,6 +17,7 @@ async function main() {
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'bank_db',
     multipleStatements: true,
+    ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
   });
 
   console.log('Seeding sample data...');
