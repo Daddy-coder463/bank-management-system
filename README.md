@@ -1,5 +1,8 @@
 # BankDB — Bank Management System
 
+**Live demo:** https://bankdb-dfip.onrender.com — log in with `admin@bank.com` / `admin123`
+*(free tier: first load after idle takes ~30-60s to wake up)*
+
 A bank management system built to demonstrate core **DBMS concepts** end to
 end: normalized schema design, ACID transactions with row locking, stored
 procedures, triggers, views, and indexing — behind a clean React interface
