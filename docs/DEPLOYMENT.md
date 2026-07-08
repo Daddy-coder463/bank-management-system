@@ -31,7 +31,7 @@ DB_NAME=bank_db DB_SSL=true npm run db:seed
 2. New → **Blueprint** → select the `bank-management-system` repo
    (Render reads `render.yaml` automatically), or New → **Web Service**
    with these settings:
-   - Build command: `cd client && npm install && npm run build && cd ../server && npm install`
+   - Build command: `cd client && npm install --include=dev && npm run build && cd ../server && npm install`
    - Start command: `cd server && npm start`
    - Health check path: `/api/health`
 3. Set the environment variables when prompted:
